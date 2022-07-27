@@ -5,40 +5,30 @@ var usersArr = [
     {username: 'Piotr Kozak', birthYear: 2000, salary: 4999},
     {username: 'Marek Sinica', birthYear: 1989, salary: 7200},
     {username: 'Kamila Wiśniewska', birthYear: 1972, salary: 6800},
+    {username: 'Damian Śnieda', birthYear: 1997, salary: 7500},
     ];
 
 function welcomeUsers(array)
 {
-    array.forEach(element => {
-        var message = null;
-        for (const[key, value] of Object.entries(element))
+    array.forEach(person => {        
+        if (person['salary'] > 15000)
         {
-            switch (key) {
-                case 'salary':
-                    if (value > 15000)
-                    {
-                        message = "Witaj, prezesie!"
-                    }
-                    if (value < 5000)
-                    {
-                        message = element['username'] + ", szykuj się na podwyżkę!"
-                    }
-                    break;
-                case 'birthYear':
-                    if (value % 2 == 0)
-                    {
-                        var obliczony_wiek_rocznikowy = new Date().getFullYear() - element['birthYear'];
-                        message = "Witaj, " + element['username'] + "! W tym roku kończysz " + obliczony_wiek_rocznikowy + " lat!";
-                    }
-                    else{
-                        message = element['username'] + ", jesteś zwolniony!";
-                    }
-                    break;
-                default:
-                    break;
-            }
+            console.log("Witaj, prezesie!");
+            return;
         }
-        console.log(message);
+        if (person['salary'] < 5000)
+        {
+            console.log(person['username'] + ", szykuj się na podwyżkę!")
+            return;
+        }
+        if (person['birthYear'] % 2 == 0)
+        {
+            var obliczony_wiek_rocznikowy = new Date().getFullYear() - person['birthYear'];
+            console.log("Witaj, " + person['username'] + "! W tym roku kończysz " + obliczony_wiek_rocznikowy + " lat!");
+        }
+        else{
+            console.log(person['username'] + ", jesteś zwolniony!");
+        }
     });
 }
 
