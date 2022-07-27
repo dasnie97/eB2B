@@ -60,17 +60,17 @@ class PhoneKeyboardConverter{
     {
         try {
             $Splitted = explode(",", $Input);
-            $Output = "";
+            $Converted = "";
     
             for ($i=0; $i < count($Splitted); $i++) {
                 if (array_key_exists($Splitted[$i], $this->Keyboard)) {
-                    $Output .= $this->Keyboard[$Splitted[$i]];
+                    $Converted .= $this->Keyboard[$Splitted[$i]];
                 }
                 else{
                     throw new Exception("Input string invalid! ");
                 }
             }
-            return strtolower($Output);
+            return strtolower($Converted);
         } catch (\Throwable $th) {
             echo ($th->getMessage());
             return null;
